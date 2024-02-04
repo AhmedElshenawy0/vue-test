@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: Build-Vue
-      uses: thefrustrateddev/vue-deploy-github-pages@v1.0.0
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         username: 'AhmedElshenawy0'
         reponame: 'vue-task'
