@@ -7,9 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Vue
     steps:
-    - uses: actions/checkout@v2
-    - id: Build-Vue
-      uses: JamesIves/github-pages-deploy-action@v4
+    - uses: actions/checkout@v3
       with:
         username: 'AhmedElshenawy0'
         reponame: 'vue-task'
