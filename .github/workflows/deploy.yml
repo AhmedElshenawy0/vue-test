@@ -1,14 +1,28 @@
-name: Build Vue
-
-on: [push]
+name: Deploy to Github Pages
+on:
+    push:
+        branches:
+            - develop
 
 jobs:
-  build_vue:
-    runs-on: ubuntu-latest
-    name: Build Vue
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        username: 'AhmedElshenawy0'
-        reponame: 'vue-task'
-        token: ${{ secrets.GITHUB_TOKEN }}
+    deploy:
+        name: Deploy Application
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@main
+            - name: Create Node Environment
+              uses: actions/setup-node@v1
+              with: 
+                node-version: 10.x
+            - name: Install Packages and Build Application
+              run: |
+                npm install
+                npm build
+            - name: Deploy
+              uses: s0/git-publish-subdir-action@develop
+              env:
+                REPO: self
+                BRANCH: main
+                FOLDER: dist
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
