@@ -10,15 +10,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Repo
-              uses: actions/checkout@main
+              uses: actions/checkout@3
 
             - name: Install Packages and Build Application
               run: |
                 npm install
                 npm run build
+                
             - name: Deploy
-              uses: peaceiris/actions-gh-pages@v3
+              uses: JamesIves/github-pages-deploy-action@v4
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: dist
+                folder: build
         
